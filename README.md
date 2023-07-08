@@ -19,6 +19,15 @@
    - Step 11: [Retrieve the Signature of your machine’s virtual disk](https://github.com/Thuggonaut/42_IC_Ring01_Born2beRoot#-step-11-retrieve-the-signature-of-your-machines-virtual-disk)
    - Step 12: [Evaluation Answers](https://github.com/Thuggonaut/42IC_Ring01_Born2beRoot/blob/main/README.md#-step-12-evaluation-answers)
 
+## Handy dandy... cheatsheet!
+1. If you encounter an error, before getting frustrated and throwing a slow-as-all-#$%! apple mac, or equivalent friend, out the window OR deleting the VM and starting again from scratch (or any other language you DON'T feel like ejecting said overrated, underperforming friend/colleuge/bocal/computer), try turning it off and on again..
+		- 'sudo reboot'
+	Works 60% of the time, everytime ;)
+3. Keep your password SIMPLE. Use a phrase that you'll never forget, or if you're like me and have the memory of a toilet seive, use a password that can be cracked faster than a keyboard over a fruit logo, such as 'root', a word you will see a number greater than any frustrated, night stalking, social loner, surrounded by equally frustrated and lonely four eyed specky freaks (ugh, the good kind.) should have to without groaning, painfully the (pff..) "bathroom" to flick a couple over the hotty 	hot hot HOT across the infinite, buzzing screens. Yes you four-eyes, don't give me any of THAT, shut it.
+4. Know how to navigate text editors nano, vi and vim. It can be a gigantic pain in the octo-nards when you accidentally try to exit nano as vim and brainfuck your entire VM, barf on your friend return of the mac, and not know how to fix the damned thing. Don't be lazy, trust me, youtube that ass boiiii.
+5. Most important cheat of all, HAVE FUN!
+6. and don't talk about byteclub.
+
 ## 🔷 Step 1: Download the Debian installer for your Virtual Machine (VM)
 
 ### 🔸 1.1: Debian
@@ -329,10 +338,10 @@ Note: press `<command>` on your Apple Keyboard & your mouse should re-appear
 ## 🔷 Step 6: Configuring your VM - Password Policy
 1. `sudo apt-get install libpam-pwquality` to install Password Quality Checking Library
 2. `sudo vim /etc/pam.d/common-password`
-3. Find this line: `password		requisite		pam_pwquality.so`
+3. Find this line: `password		requisite		pam_pwquality.so retry=3`
     - Add to the end of that line `minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root`
     - The line should now look like this: `password  requisite     pam_pwquality.so  retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root`
-4. Exit & Save Vim
+4. Exit & Save Vim 'esc Shift+: wq [Enter]'
 5. `sudo vim /etc/login.defs` to configure the Password Policy.
 6. Find this part `PASS_MAX_DAYS 9999 PASS_MIN_DAYS 0 PASS_WARN_AGE 7`. Edit that part to: 
     - `PASS_MAX_DAYS 30` 
@@ -374,6 +383,7 @@ Note: press `<command>` on your Apple Keyboard & your mouse should re-appear
    Defaults	log_input, log_output
    Defaults	requiretty
    ```
+3. Save modified buffer and exit nano text editor
 
 ## 🔷 Step 9: Configuring your VM - Script Monitoring & Crontab
    
